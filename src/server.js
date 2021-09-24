@@ -6,6 +6,8 @@ const initHandlebars = require('./config/handlebars');
 
 const app = express();
 
+app.use(express.urlencoded({ extended: true }));
+
 initHandlebars(app);
 
 // require('./config/handlebars.js')(app);
