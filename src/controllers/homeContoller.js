@@ -12,7 +12,15 @@ const about = (req, res) => {
     res.render('about');
 }
 
+// const search = (req, res) => {
+
+//     console.log(req.query);
+
+//     res.render('index');
+// }
+
 router.get('/', homeView);
 router.get('/about', about);
+// router.get('/search', search);
 
 module.exports = router;
