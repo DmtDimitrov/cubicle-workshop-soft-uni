@@ -8,6 +8,11 @@ const homeView = (req, res) => {
     res.render('index', { cubes });
 };
 
+const about = (req, res) => {
+    res.render('about');
+}
+
 router.get('/', homeView);
+router.get('/about', about);
 
 module.exports = router;
