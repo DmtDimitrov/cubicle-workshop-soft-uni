@@ -16,7 +16,14 @@ class Cube {
             description: 'Standard Rubic Cube',
             imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqeuS_1ZPeKGL0PfeomD_vvU1kCZaAGcEePA&usqp=CAU',
             difficulty: '1'
-          }
+        },
+        {
+            id: '1kjfp750ktz32jjd',
+            name: 'Speed Cube',
+            description: 'Speed Rubick Cube',
+            imageUrl: 'https://m.media-amazon.com/images/I/616GkZKULoS.jpg',
+            difficulty: '2'
+        }
     ];
 
     constructor(name, description, imageUrl, difficulty) {
