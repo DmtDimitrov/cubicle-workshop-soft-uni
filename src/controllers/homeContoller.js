@@ -1,4 +1,5 @@
 const express = require('express');
+const { cubes } = require('../models/Cube.js');
 const cubeService = require('../services/cubeService')
 
 const router = express.Router();
@@ -12,15 +13,22 @@ const about = (req, res) => {
     res.render('about');
 }
 
-// const search = (req, res) => {
+const search = (req, res) => {
 
-//     console.log(req.query);
+    console.log(req.query);
 
-//     res.render('index');
-// }
+    let { search, from, to } = req.query;
+
+    // let search = req.query.search;
+    // let from = req.query.from
+
+    let cubes = cubeService.search(search, from, to);
+
+    res.render('index', { cubes });
+}
 
 router.get('/', homeView);
 router.get('/about', about);
-// router.get('/search', search);
+router.get('/search', search);
 
 module.exports = router;
