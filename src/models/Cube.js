@@ -1,45 +1,31 @@
-const uniqid = require('uniqid');
+const mongoose = require('mongoose');
 
-class Cube {
-
-    static #cubes = [
-        {
-            id: '2kjfpb4sktz133oo',
-            name: 'Mirror Cube',
-            description: 'mirror cube',
-            imageUrl: 'https://m.media-amazon.com/images/I/71TrvUl50OL.jpg',
-            difficulty: '4'
-        },
-        {
-            id: '1kjfpb4sktz133oo',
-            name: 'Rubic Cube',
-            description: 'Standard Rubic Cube',
-            imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqeuS_1ZPeKGL0PfeomD_vvU1kCZaAGcEePA&usqp=CAU',
-            difficulty: '1'
-        },
-        {
-            id: '1kjfp750ktz32jjd',
-            name: 'Speed Cube',
-            description: 'Speed Rubick Cube',
-            imageUrl: 'https://m.media-amazon.com/images/I/616GkZKULoS.jpg',
-            difficulty: '2'
+const cubeSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true,
+        maxlength: 100
+    },
+    imageUrl: {
+        type: String,
+        required: true,
+        // validate: /^https?:\/\//i
+        validate: {
+            validator:function(value){
+                return /^https?:\/\//i.test(value);
+            },
+            message: 'Image Url is invalid'
         }
-    ];
+    },
 
-    constructor(name, description, imageUrl, difficulty) {
-        this.id = uniqid();
-        this.name = name;
-        this.description = description;
-        this.imageUrl = imageUrl;
-        this.difficulty = difficulty;
-    }
-    static get cubes() {
-        return Cube.#cubes.slice();
-    }
+});
 
-    static add(cube) {
-        Cube.#cubes.push(cube);
-    }
-}
+// cubeSchema.path('imageUrl').validate = function(value){
+//     return /^https?:\/\//i.test(value);
+// }
 
 module.exports = Cube;
