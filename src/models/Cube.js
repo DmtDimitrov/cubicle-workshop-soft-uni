@@ -15,17 +15,25 @@ const cubeSchema = new mongoose.Schema({
         required: true,
         // validate: /^https?:\/\//i
         validate: {
-            validator:function(value){
+            validator: function (value) {
                 return /^https?:\/\//i.test(value);
             },
             message: 'Image Url is invalid'
         }
     },
+    difficulty: {
+        type: Number,
+        required: true,
+        min: 1,
+        max: 5,
+    }
 
 });
 
 // cubeSchema.path('imageUrl').validate = function(value){
 //     return /^https?:\/\//i.test(value);
 // }
+
+const Cube = mongoose.model('Cube', cubeSchema);
 
 module.exports = Cube;
