@@ -24,11 +24,11 @@ const search = (req, res) => {
 
     let cubes = cubeService.search(search, from, to);
 
-    res.render('index', { 
+    res.render('index', {
         cubes,
         title: 'SEARCH',
-        search, 
-        from, 
+        search,
+        from,
         to
     });
 }
