@@ -8,7 +8,7 @@ const router = express.Router();
 
 const createCubeView = async (req, res) => {
 
-    res.render('create');
+    res.render('cube/create');
 };
 
 const createCube = async (req, res) => {
