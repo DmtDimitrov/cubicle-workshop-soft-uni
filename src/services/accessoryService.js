@@ -5,7 +5,7 @@ async function create(name, description, imageUrl) {
 };
 
 async function getAll() {
-  return Accessory.find({name:"Pesho"}).lean();
+  return Accessory.find({}).lean();
 }
 
 const accessoryService = {
