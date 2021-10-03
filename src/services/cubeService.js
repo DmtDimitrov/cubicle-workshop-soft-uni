@@ -11,12 +11,12 @@ const create = (name, description, imageUrl, difficulty) => {
         imageUrl,
         difficulty,
     });
-// Cube.create()
+    // Cube.create()
     return cube.save();
 };
 
 const search = (searchedText, from, to) => {
-    
+
     let result = getAll();
 
     if (searchedText) {
@@ -24,14 +24,14 @@ const search = (searchedText, from, to) => {
     }
 
     if (from) {
-        result = result.filter(x => x.difficulty >= from );
+        result = result.filter(x => x.difficulty >= from);
     }
 
     if (to) {
         result = result.filter(x => x.difficulty <= to);
     }
-console.log(result);
- return result;
+    console.log(result);
+    return result;
 };
 
 const cubeService = {
