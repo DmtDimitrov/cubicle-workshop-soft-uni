@@ -19,7 +19,7 @@ app.use(routes);
 
 
 initDb(config.DB_CONNECTION_STRING)
-    .then(()=>{
+    .then(() => {
         app.listen(config.PORT, console.log.bind(console, `Application is running on http://localhost:${config.PORT}`));
     })
     .catch(err => {
