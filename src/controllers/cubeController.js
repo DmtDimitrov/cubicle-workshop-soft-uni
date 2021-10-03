@@ -2,6 +2,8 @@ const express = require('express');
 
 const cubeService = require('../services/cubeService');
 
+const cubeAccessoryController = require('./cubeAccessoryController.js');
+
 const router = express.Router();
 
 const createCubeView = async (req, res) => {
@@ -10,7 +12,7 @@ const createCubeView = async (req, res) => {
 };
 
 const createCube = async (req, res) => {
-    
+
     let { name, description, imageUrl, difficulty } = req.body;
     try {
         await cubeService.create(name, description, imageUrl, difficulty);
@@ -19,7 +21,7 @@ const createCube = async (req, res) => {
         // res.status(400).json({message: error.message});
         res.status(400).send(error.message);
     }
-    
+
 };
 
 const cubeDetails = async (req, res) => {
@@ -27,12 +29,13 @@ const cubeDetails = async (req, res) => {
         let cube = await cubeService.getOne(req.params.cubeId);
         res.render('cube/details', { ...cube });
     } catch (error) {
-        
+
     }
 };
 
 router.get('/create', createCubeView);
 router.post('/create', createCube);
 router.get('/:cubeId', cubeDetails);
+router.use('/:cubeId/accessory', cubeAccessoryController);
 
 module.exports = router;
