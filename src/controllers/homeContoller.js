@@ -7,8 +7,11 @@ const router = express.Router();
 const homeView = async (req, res) => {
     let cubes = await cubeService.getAll();
 
+    ////////////////////////////////////////////////
+    //// add static method in models. not used!
     let test = await Cube.findByName('Speed Cube');
     console.log(test);
+    ///////////////////////////////////////////////
 
     res.render('index', { cubes });
 };

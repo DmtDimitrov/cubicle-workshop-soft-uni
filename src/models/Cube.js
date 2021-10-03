@@ -40,9 +40,13 @@ const cubeSchema = new mongoose.Schema({
 //     return /^https?:\/\//i.test(value);
 // });
 
+///////////////////////////////////////////////////////
+// add static method in models.
 cubeSchema.statics.findByName = function(name){
 return this.find({name});
 };
+
+/////////////////////////////////////////////////////
 
 const Cube = mongoose.model('Cube', cubeSchema);
 
