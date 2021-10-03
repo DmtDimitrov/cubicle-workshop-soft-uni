@@ -18,9 +18,9 @@ const create = (name, description, imageUrl, difficulty) => {
     return cube.save();
 };
 
-const search = (searchedText, from, to) => {
+const search = async (searchedText, from, to) => {
 
-    let result = getAll();
+    let result = await getAll();
 
     if (searchedText) {
         result = result.filter(x => x.name.toLowerCase().includes(searchedText.toLowerCase()))
