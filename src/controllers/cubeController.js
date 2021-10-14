@@ -30,7 +30,7 @@ const cubeDetails = async (req, res) => {
         
         res.render('cube/details', { ...cube });
     } catch (error) {
-
+        res.status(400).send(error.message);
     }
 };
 
